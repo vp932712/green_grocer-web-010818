@@ -1,22 +1,28 @@
-def consolidate_cart(item)
-  final = Hash.new 0
-  semiFinal = Hash.new 0
-  empty = Hash.new 0
-item.each do |hash|
-  hash.each do |food, description|
-   final[food] +=1
+def consolidate_cart(cart)
+  # code here
+  consolidated = {}
+  key = :count
 
-end
-end
-item.each do |hash|
-  hash.each do |food, description|
-  final.each do |key, value|
-    empty[:count] = value
-    semiFinal[key] = description.merge(empty)
+  cart.each do |item|
+    puts item
+    item.each do |name, details|
+    # details[:count = 1
+    # puts name
+      if consolidated.has_key?(name) == false
+        puts consolidated
+        puts name
+        puts details
+        consolidated[name] = details
+        consolidated[name][key] = 1
+        puts consolidated
+      else
+        if consolidated.has_key?(name)
+         consolidated[name][:count] += 1
+        end
+      end
+    end
   end
-end
-end
-semiFinal
+  consolidated
 end
 
 
