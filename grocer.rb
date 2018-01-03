@@ -22,7 +22,7 @@ def apply_coupons(cart, coupon)
     if cart.has_key?(name_of_item) == true && cart[name_of_item][:count] >= item[:num]
       cart[name_of_item][:count] = cart[name_of_item][:count] - item[:num]
       new_item = name_of_item + (" W/COUPON")
-      
+
       if cart.has_key?(new_item) == false
         cart[new_item] = {:price => item[:cost], :clearance => cart[name_of_item][:clearance], :count => 1}
       else
@@ -45,10 +45,10 @@ def apply_clearance(cart)
 end
 
 def checkout(cart: [], coupons: [])
-  
+
   total = 0
   cart = consolidate_cart(cart)
-  
+
   if cart.length == 1
     cart = apply_coupons(cart, coupons)
     cart_clearance = apply_clearance(cart)
@@ -70,7 +70,7 @@ def checkout(cart: [], coupons: [])
       total += (details[:price]*details[:count])
     end
   end
-  
+
 
   if total > 100
     total = total*(0.90)
