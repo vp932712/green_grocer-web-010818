@@ -35,10 +35,11 @@ end
 
 def apply_clearance(cart)
 
-  discount = 0.20
+  
   cart.each do |item, details|
     if cart[item][:clearance] == true
-      cart[item][:price] = (cart[item][:price]*discount)
+      cart[item][:price] = (cart[item][:price]*0.2)
+      
     end
   end
   cart
